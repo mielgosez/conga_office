@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="conga_office",
-    version="0.0.8",
+    version="0.0.9",
     author="Jose Mielgo",
     author_email="mielgosez@gmail.com",
     description="Python library thought to active conga-office in order to appear online to your employer while "
