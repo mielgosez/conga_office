@@ -1,4 +1,4 @@
-from conga_office.tools import activate_conga_office
+from src.conga_office.tools import activate_conga_office
 
 
 def test_linear_pattern():

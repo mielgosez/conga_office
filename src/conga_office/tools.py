@@ -1,16 +1,14 @@
 import pyautogui
 import numpy as np
-import json
+from conga_office.config.metadata import valid_speed_modes
 
 
 def get_speed(speed_value: str):
-    with open('./config/metadata.json', 'rb') as fp:
-        metadata_file = json.load(fp)
-    if speed_value in metadata_file['valid_speed_modes'].keys():
-        return metadata_file['valid_speed_modes'][speed_value]
+    if speed_value in valid_speed_modes.keys():
+        return valid_speed_modes[speed_value]
     else:
         raise ValueError(f'{speed_value} is not a recognized valid value. '
-                         f'Valid values are: {", ".join(list(metadata_file["valid_speed_modes"].keys()))}')
+                         f'Valid values are: {", ".join(list(valid_speed_modes.keys()))}')
 
 
 def validate_duration_and_speed(duration: float, speed: float):
