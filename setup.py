@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="conga_office",
-    version="0.0.8",
+    version="0.1.0",
     author="Jose Mielgo",
     author_email="mielgosez@gmail.com",
     description="Python library thought to active conga-office in order to appear online to your employer while "
@@ -25,5 +25,6 @@ setuptools.setup(
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.6",
     install_requires=["pyautogui",
+                      "requests",
                       "numpy"]
 )
