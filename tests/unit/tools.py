@@ -1,4 +1,6 @@
-from src.conga_office.tools import activate_conga_office
+import os
+
+from src.conga_office.tools import activate_conga_office, send_bs_via_teams
 
 
 def test_linear_pattern():
@@ -17,5 +19,10 @@ def test_random_pattern():
 
 
 def test_circular_pattern():
-    activate_conga_office(duration=3, speed='normal', pattern='circular')
+    # activate_conga_office(duration=1, speed='normal', pattern='circular')
+    assert True
+
+
+def test_teams_bs_generator():
+    send_bs_via_teams(os.environ['CONTACT_ID'], 5, 2)
     assert True
