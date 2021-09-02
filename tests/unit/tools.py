@@ -19,7 +19,7 @@ def test_random_pattern():
 
 
 def test_circular_pattern():
-    # activate_conga_office(duration=1, speed='normal', pattern='circular')
+    activate_conga_office(duration=1, speed='normal', pattern='circular')
     assert True
 
 
