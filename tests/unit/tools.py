@@ -1,6 +1,6 @@
 import os
 
-from src.conga_office.tools import activate_conga_office, send_bs_via_teams
+from src.conga_office.tools import activate_conga_office, send_bs_via_teams, send_bs_via_slack
 
 
 def test_linear_pattern():
@@ -25,4 +25,9 @@ def test_circular_pattern():
 
 def test_teams_bs_generator():
     send_bs_via_teams(os.environ['CONTACT_ID'], 5, 2)
+    assert True
+
+
+def test_slack_bs_generator():
+    send_bs_via_slack(contact_id='Test Name', number_of_bs_statements=2, intervals_in_secs=2)
     assert True
