@@ -3,6 +3,7 @@ import time
 import numpy as np
 import requests
 from conga_office.config.metadata import valid_speed_modes, teams_search_key, bs_generator_api, waiting_intervals
+import os
 
 
 def get_speed(speed_value: str):
@@ -178,3 +179,52 @@ def send_bs_via_teams(contact_id: str,
         pyautogui.typewrite(['enter', 'enter'])
         time.sleep(waiting_intervals)
         time.sleep(intervals_in_secs)
+
+
+def find_slack_macOS():
+  """
+  Open slack.
+  :return:
+  """
+  os.system("open -a Slack")
+
+
+def open_slack_chat_with_contact(contact_id: str):
+  """
+  Open teams' chat window with contact
+  :param contact_id:
+  :return:
+  """
+  find_slack_macOS()
+  time.sleep(waiting_intervals)
+  pyautogui.hotkey('enter')
+  pyautogui.hotkey('command', 'g')
+  time.sleep(waiting_intervals)
+  pyautogui.typewrite(contact_id)
+  time.sleep(waiting_intervals)
+  pyautogui.press('down')
+  time.sleep(waiting_intervals)
+  pyautogui.press('enter')
+
+
+def send_bs_via_slack(contact_id: str,
+                      number_of_bs_statements: int,
+                      intervals_in_secs: float,
+                      bs_generator_url: str = bs_generator_api):
+  """
+
+  :param bs_generator_url:
+  :param contact_id:
+  :param number_of_bs_statements:
+  :param intervals_in_secs:
+  :return:
+  """
+  open_slack_chat_with_contact(contact_id=contact_id)
+  for _ in range(number_of_bs_statements):
+    bs_request = requests.get(bs_generator_url)
+    bs_msg = bs_request.json()['phrase']
+    pyautogui.typewrite(bs_msg)
+    time.sleep(waiting_intervals)
+    pyautogui.typewrite(['enter', 'enter'])
+    time.sleep(waiting_intervals)
+    time.sleep(intervals_in_secs)
